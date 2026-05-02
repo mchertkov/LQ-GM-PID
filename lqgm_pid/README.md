@@ -1,6 +1,6 @@
 ## `lqgm_pid/`
 
-Core PyTorch API for the analytic LQ-GM-PID backbone used in the paper. The package implements piecewise-constant linear--quadratic protocols, Riccati/Green-function coefficient propagation, closed-form optimal control evaluation, exact intermediate Gaussian-mixture marginals, and Euler--Maruyama simulation for diagnostics and visualization.
+Core PyTorch API for the analytic LQ-GM-PID backbone used in the paper: "Analytic Bridge Diffusions with Controlled Path Generation" (released May 2, 2026). The package implements piecewise-constant linear--quadratic protocols, Riccati/Green-function coefficient propagation, closed-form optimal control evaluation, exact intermediate Gaussian-mixture marginals, and Euler--Maruyama simulation for diagnostics and visualization.
 
 The main public entry point is `LQGMPID`: construct a `MatrixPWCProtocol`, specify a Gaussian-mixture target, set the deterministic source point `x0`, run `precompute()`, and then query the closed-form score/control field, log potential, responsibilities, marginals, or simulated trajectories.
 
