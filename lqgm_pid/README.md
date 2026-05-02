@@ -1,31 +1,80 @@
 ## `lqgm_pid/`
 
-Core Python API for LQ-GM-PID. This package implements the analytic backbone used by the paper: piecewise-constant protocols, forward/backward Riccati coefficient propagation, Gaussian-mixture Green-function algebra, closed-form score evaluation, exact intermediate marginal evaluation, and density-level diagnostics/objectives used by the experiment notebooks.
+Core PyTorch API for the analytic LQ-GM-PID backbone used in the paper. The package implements piecewise-constant linear--quadratic protocols, Riccati/Green-function coefficient propagation, closed-form optimal control evaluation, exact intermediate Gaussian-mixture marginals, and Euler--Maruyama simulation for diagnostics and visualization.
 
-Typical contents:
+The main public entry point is `LQGMPID`: construct a `MatrixPWCProtocol`, specify a Gaussian-mixture target, set the deterministic source point `x0`, run `precompute()`, and then query the closed-form score/control field, log potential, responsibilities, marginals, or simulated trajectories.
+
+### Main files
+
+- `core.py`  
+  Dataclasses for the API:
+  - `TimeDomain`: endpoint-clamped time interval handling;
+  - `GaussianMixture`: weights, means, covariances, and precisions;
+  - `MatrixPWCProtocol`: piecewise-constant protocol  
+    $$
+    \Gamma_t=(\beta_t,\nu_t,\sigma_t,\kappa_t)
+    $$
+    with full matrix-valued `beta` and `sigma`;
+  - `CoeffState`: Green-function coefficient snapshot  
+    $$
+    (A,B,C,\theta_x,\theta_y,\zeta).
+    $$
+
+- `hamiltonian.py`  
+  Builds the augmented Hamiltonian matrices used for Riccati and linear-coefficient propagation on each PWC interval. This includes backward/forward Hamiltonians for the quadratic coefficients, augmented systems for `C`, and augmented systems for the linear terms.
 
 - `coeff_propagator.py`  
-  Riccati and linear-coefficient propagation for the LQ-GM-PID forward/backward Green functions under piecewise-constant protocols.
+  Single-interval propagation of Green-function coefficients. Provides:
+  - `backward_interval`;
+  - `forward_interval`;
+  - `delta_bc`.
 
-- `green_functions.py`  
-  Gaussian Green-function utilities and algebra used to assemble bridge scores, responsibilities, and marginal Gaussian-mixture components.
+  The implementation uses matrix-exponential propagation for the general matrix case and includes optimized analytic branches for important special cases such as zero drift with diagonal or SPD `beta`.
 
-- `score.py` / `control.py`  
-  Evaluation of the optimal drift / score field $u_t^*(x)$ from the propagated coefficients.
+- `sweep.py`  
+  Full backward and forward sweeps over all PWC intervals:
+  - `backward_sweep(protocol)`;
+  - `forward_sweep(protocol)`;
+  - `full_sweep(protocol)`.
 
-- `marginals.py`  
-  Closed-form intermediate marginal \(p_t(x)\) as a Gaussian mixture, including component weights, means, and precisions.
+  These return lists of `CoeffState` objects at the protocol breakpoints.
 
-- `protocols.py`  
-  Data structures and helper constructors for protocols $\Gamma_t=(\beta_t,\nu_t,\sigma_t,\kappa_t)$, including scalar, anisotropic, and block-structured matrix schedules.
+- `control.py`  
+  Evaluation routines for the closed-form LQ-GM-PID control/score:
+  - `eval_bwd`;
+  - `eval_fwd`;
+  - `gmm_control`.
 
-- `gmm.py` / `specs.py`  
-  Gaussian-mixture target/source specifications used in the corridor, multi-entrance, and high-dimensional trunk--branch--local experiments.
+  `gmm_control` evaluates the optimal drift $u_t^*(x)$, the log potential/log normalizer, and the Gaussian-mixture responsibilities at query points.
 
-- `objectives.py` / `metrics.py`  
-  Density-level path objectives and diagnostics, including corridor adherence, guide cost, kinetic/protocol penalties, subspace variance traces, and terminal mode-allocation checks.
+- `density.py`  
+  Exact intermediate marginal evaluation. The main routine,
+  `exact_marginal_gmm`, returns the Gaussian-mixture representation of the instantaneous marginal \(p_t(x)\), including component weights, means, precisions/covariances, and related diagnostic quantities.
 
-- `sampling.py`  
-  Euler--Maruyama trajectory simulation using the closed-form score, used only for visualization and empirical diagnostics, not for density-level optimization.
+- `pid.py`  
+  High-level wrapper class `LQGMPID`. It caches the forward/backward sweeps and exposes the convenient user-facing methods:
+  - `precompute()`;
+  - `control(t, x)`;
+  - `control_full(t, x)`;
+  - `log_psi(t, x)`;
+  - `bwd_at(t)`;
+  - `fwd_at(t)`;
+  - `simulate(...)`.
 
-The API is designed so that experiment notebooks can construct a source/target GMM and a protocol, run the Riccati precompute once, and then query scores, marginals, objectives, gradients, and diagnostic quantities without an inner stochastic simulation loop.
+- `__init__.py`  
+  Public API exports for the package.
+
+### Typical usage
+
+```python
+from lqgm_pid import LQGMPID, MatrixPWCProtocol, GaussianMixture
+
+protocol = MatrixPWCProtocol.from_scalar_beta(breaks, beta_scalars, nu)
+target = GaussianMixture(weights, means, covs)
+
+pid = LQGMPID(protocol=protocol, target=target, x0=x0)
+pid.precompute()
+
+u = pid.control(t, x)                 # closed-form optimal drift / score
+u, log_psi, rho = pid.control_full(t, x)
+result = pid.simulate(B=256, n_steps=2000)
