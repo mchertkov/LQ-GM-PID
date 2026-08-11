@@ -1,0 +1,5 @@
+numpy>=2.0
+matplotlib>=3.8
+torch>=2.2
+jupyter>=1.0
+nbconvert>=7.0
