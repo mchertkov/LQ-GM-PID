@@ -1,0 +1,10 @@
+{
+  "baseline_Lcorr": 0.7024818890249533,
+  "baseline_cov_err": 0.0007852832122275127,
+  "baseline_mean_err": 0.0030653538355858365,
+  "best_iter": 300,
+  "improvement_pct": 35.337135963209384,
+  "optimized_Lcorr": 0.45424490878328394,
+  "optimized_cov_err": 0.002475043431648124,
+  "optimized_mean_err": 0.003947289913907569
+}
