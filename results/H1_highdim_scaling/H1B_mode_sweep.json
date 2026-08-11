@@ -1,0 +1,200 @@
+{
+  "results": [
+    {
+      "B_branches": 2,
+      "L_locals": 1,
+      "M": 2,
+      "d": 16,
+      "layout": {
+        "d_B": 4,
+        "d_L": 10,
+        "d_T": 2
+      },
+      "protocols": {
+        "B0": {
+          "metrics": {
+            "branch_time_dens": 0.22999999999999998,
+            "branch_time_emp": 0.17833333333333332,
+            "guide_cost": 3.3777819207081095,
+            "linf_weight_err": 0.03906250000000028,
+            "max_weight_emp": 0.5390625000000002,
+            "mean_l2_error": 0.14344360819971574,
+            "min_weight_emp": 0.4609374999999997,
+            "tv_weight_err": 0.03906250000000025
+          }
+        },
+        "B1": {
+          "metrics": {
+            "branch_time_dens": 0.22999999999999998,
+            "branch_time_emp": 0.20166666666666666,
+            "guide_cost": 3.291317789446795,
+            "linf_weight_err": 0.04199218750000233,
+            "max_weight_emp": 0.5419921875000023,
+            "mean_l2_error": 0.14503193265977016,
+            "min_weight_emp": 0.45800781249999767,
+            "tv_weight_err": 0.04199218750000233
+          }
+        },
+        "B2": {
+          "metrics": {
+            "branch_time_dens": 0.22999999999999998,
+            "branch_time_emp": 0.215,
+            "guide_cost": 3.357636396508404,
+            "linf_weight_err": 0.04003906250000022,
+            "max_weight_emp": 0.5400390625000002,
+            "mean_l2_error": 0.1442702105050532,
+            "min_weight_emp": 0.4599609374999998,
+            "tv_weight_err": 0.04003906250000022
+          }
+        }
+      }
+    },
+    {
+      "B_branches": 2,
+      "L_locals": 2,
+      "M": 4,
+      "d": 16,
+      "layout": {
+        "d_B": 4,
+        "d_L": 10,
+        "d_T": 2
+      },
+      "protocols": {
+        "B0": {
+          "metrics": {
+            "branch_time_dens": 0.22999999999999998,
+            "branch_time_emp": 0.17833333333333332,
+            "guide_cost": 3.4116616554131682,
+            "linf_weight_err": 0.033383216740026145,
+            "max_weight_emp": 0.2800407962807737,
+            "mean_l2_error": 0.14294208321834104,
+            "min_weight_emp": 0.21661678325997386,
+            "tv_weight_err": 0.03906250000000028
+          }
+        },
+        "B1": {
+          "metrics": {
+            "branch_time_dens": 0.22999999999999998,
+            "branch_time_emp": 0.20166666666666666,
+            "guide_cost": 3.3198605375307744,
+            "linf_weight_err": 0.03290895582326969,
+            "max_weight_emp": 0.2794494566801594,
+            "mean_l2_error": 0.14453525047965624,
+            "min_weight_emp": 0.2170910441767303,
+            "tv_weight_err": 0.041992187500002345
+          }
+        },
+        "B2": {
+          "metrics": {
+            "branch_time_dens": 0.22999999999999998,
+            "branch_time_emp": 0.215,
+            "guide_cost": 3.386179144592384,
+            "linf_weight_err": 0.03237300944038535,
+            "max_weight_emp": 0.27891351029727507,
+            "mean_l2_error": 0.14377089684411526,
+            "min_weight_emp": 0.21762699055961465,
+            "tv_weight_err": 0.04003906250000021
+          }
+        }
+      }
+    },
+    {
+      "B_branches": 4,
+      "L_locals": 2,
+      "M": 8,
+      "d": 16,
+      "layout": {
+        "d_B": 4,
+        "d_L": 10,
+        "d_T": 2
+      },
+      "protocols": {
+        "B0": {
+          "metrics": {
+            "branch_time_dens": 0.41,
+            "branch_time_emp": 0.3916666666666666,
+            "guide_cost": 3.6729836401571676,
+            "linf_weight_err": 0.030681637827273567,
+            "max_weight_emp": 0.15568163782727357,
+            "mean_l2_error": 0.17512903886211934,
+            "min_weight_emp": 0.10340019575667236,
+            "tv_weight_err": 0.06066230424329213
+          }
+        },
+        "B1": {
+          "metrics": {
+            "branch_time_dens": 0.49999999999999994,
+            "branch_time_emp": 0.5083333333333333,
+            "guide_cost": 3.538679171747985,
+            "linf_weight_err": 0.029842371861511646,
+            "max_weight_emp": 0.15484237186151165,
+            "mean_l2_error": 0.16587323723438868,
+            "min_weight_emp": 0.1024726604416237,
+            "tv_weight_err": 0.05175781249998261
+          }
+        },
+        "B2": {
+          "metrics": {
+            "branch_time_dens": 0.49999999999999994,
+            "branch_time_emp": 0.46166666666666667,
+            "guide_cost": 3.6470295405032953,
+            "linf_weight_err": 0.028430575953752785,
+            "max_weight_emp": 0.15343057595375278,
+            "mean_l2_error": 0.17330629852494792,
+            "min_weight_emp": 0.10416450897868129,
+            "tv_weight_err": 0.0574512378648063
+          }
+        }
+      }
+    },
+    {
+      "B_branches": 4,
+      "L_locals": 4,
+      "M": 16,
+      "d": 16,
+      "layout": {
+        "d_B": 4,
+        "d_L": 10,
+        "d_T": 2
+      },
+      "protocols": {
+        "B0": {
+          "metrics": {
+            "branch_time_dens": 0.41,
+            "branch_time_emp": 0.3916666666666666,
+            "guide_cost": 3.6724451517885806,
+            "linf_weight_err": 0.018401637705515644,
+            "max_weight_emp": 0.08090163770551564,
+            "mean_l2_error": 0.17392039102301823,
+            "min_weight_emp": 0.051144265274385266,
+            "tv_weight_err": 0.062295204246251915
+          }
+        },
+        "B1": {
+          "metrics": {
+            "branch_time_dens": 0.49999999999999994,
+            "branch_time_emp": 0.5083333333333333,
+            "guide_cost": 3.538203416037854,
+            "linf_weight_err": 0.016359353750433805,
+            "max_weight_emp": 0.0788593537504338,
+            "mean_l2_error": 0.16457392942748542,
+            "min_weight_emp": 0.050041886700826474,
+            "tv_weight_err": 0.05753080221476837
+          }
+        },
+        "B2": {
+          "metrics": {
+            "branch_time_dens": 0.49999999999999994,
+            "branch_time_emp": 0.46166666666666667,
+            "guide_cost": 3.6465537847931646,
+            "linf_weight_err": 0.0162268685512732,
+            "max_weight_emp": 0.0787268685512732,
+            "mean_l2_error": 0.17206312947579883,
+            "min_weight_emp": 0.05076639776725801,
+            "tv_weight_err": 0.059225986223700705
+          }
+        }
+      }
+    }
+  ]
+}
