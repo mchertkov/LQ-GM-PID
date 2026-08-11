@@ -1,0 +1,14 @@
+{
+  "baseline_Lcorr": 0.7733474346024938,
+  "baseline_cov_err": 0.0007852742274898574,
+  "baseline_mean_err": 0.0032657278169301363,
+  "best_iter": 300,
+  "improvement_pct": 34.38583983660814,
+  "initial_modes": 2,
+  "initial_particles": 60,
+  "n_marginal_components": 120,
+  "optimized_Lcorr": 0.5074254243595624,
+  "optimized_cov_err": 0.0024908401279195268,
+  "optimized_mean_err": 0.004112168122032387,
+  "target_modes": 2
+}
